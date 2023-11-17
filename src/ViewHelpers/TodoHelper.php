@@ -4,6 +4,10 @@ namespace App\ViewHelpers;
 
 class TodoHelper
 {
+//    public static function addItem()
+//    {
+//        return '<form action="">';
+//    }
     public static function displayTodoList(array $todoList): string
     {
         $todoHeader = '<h2>To do</h2>';

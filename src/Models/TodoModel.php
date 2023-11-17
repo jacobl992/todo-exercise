@@ -18,9 +18,9 @@ class TodoModel
         return $query->fetchAll();
     }
 
-    public function addItem()
+    public function addItem(string $item)
     {
-        $query = $this->db->prepare('INSERT INTO `todo` (`id`, `item`, `deleted`, `completed`) VALUES (?,?,0,0)');
-        
+        $query = $this->db->prepare('INSERT INTO `todo` (`id`, `item`, `deleted`, `completed`) VALUES (NULL,?,0,0)');
+        $query->execute([$item]);
     }
 }

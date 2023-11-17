@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use App\Controllers\CoursesAPIController;
 use App\Controllers\TodoController;
+use App\Controllers\AddItemController;
 use Slim\App;
 use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
@@ -20,5 +21,7 @@ return function (App $app) {
     $app->get('/courses', CoursesAPIController::class);
 
     $app->get('/todolist', TodoController::class);
+
+    $app->post('/additem', AddItemController::class);
 
 };

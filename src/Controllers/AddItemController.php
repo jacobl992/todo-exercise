@@ -6,7 +6,8 @@ use App\Models\TodoModel;
 use Psr\Http\Message\RequestInterface;
 use \Slim\Http\Interfaces\ResponseInterface;
 use Slim\Views\PhpRenderer;
-class TodoController
+
+class AddItemController
 {
     private TodoModel $model;
     private PhpRenderer $renderer;
@@ -19,15 +20,10 @@ class TodoController
 
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args)
     {
-        if ($request->getMethod() === 'POST') {
-            $postData = $request->getParsedBody();
-            if (isset($postData['item'])) {
-                $this->model->addItem($postData['item']);
-            }
-            return $response->withRedirect('/todolist');
+        $postData = $request->getParsedBody();
+        if (isset($postData['item'])) {
+            $this->model->addItem($postData['item']);
         }
-
-        $data = $this->model->getTodoList();
-        return $this->renderer->render($response, 'todo.php', ['todoList' => $data]);
+        return $response->withRedirect('/todolist');
     }
 }
