@@ -13,8 +13,14 @@ class TodoModel
 
     public function getTodoList()
     {
-        $query = $this->db->prepare('SELECT * FROM `todo`');
+        $query = $this->db->prepare('SELECT * FROM `todo` WHERE `deleted` = 0');
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function addItem()
+    {
+        $query = $this->db->prepare('INSERT INTO `todo` (`id`, `item`, `deleted`, `completed`) VALUES (?,?,0,0)');
+        
     }
 }

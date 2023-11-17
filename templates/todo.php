@@ -7,6 +7,8 @@
 
 <body>
 <h1>To Do List</h1>
-<?php echo \App\ViewHelpers\TodoHelper::displayTodoList($todoList); ?>
+<?php echo \App\ViewHelpers\TodoHelper::displayTodoList($todoList);
+echo \App\ViewHelpers\TodoHelper::displayCompleted($todoList);
+?>
 
 </body>
