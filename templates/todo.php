@@ -10,8 +10,9 @@
 
 <form method="post" action="/additem">
 <!--<form method="post" action="TodoController.php">-->
-    <input type="text" name="item" id="item"><br>
-    <input type="submit" value="Add Item">
+<!--    <input type="textarea" name="item" id="item"><br>-->
+    <textarea id="item" name="item" rows="1" cols="50"></textarea><br>
+    <input type="submit" value="Add to list">
 </form>
 
 <?php echo \App\ViewHelpers\TodoHelper::displayTodoList($todoList);
