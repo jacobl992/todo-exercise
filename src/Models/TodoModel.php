@@ -23,4 +23,10 @@ class TodoModel
         $query = $this->db->prepare('INSERT INTO `todo` (`id`, `item`, `deleted`, `completed`) VALUES (NULL,?,0,0)');
         $query->execute([$item]);
     }
+
+    public function markCompleted(int $id)
+    {
+        $query = $this->db->prepare('UPDATE `todo` SET `completed` = 1 WHERE `id` = ?');
+        $query->execute([$id]);
+    }
 }

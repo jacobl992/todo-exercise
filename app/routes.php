@@ -4,6 +4,7 @@ declare(strict_types=1);
 use App\Controllers\CoursesAPIController;
 use App\Controllers\TodoController;
 use App\Controllers\AddItemController;
+use App\Controllers\MarkCompletedController;
 use Slim\App;
 use Slim\Views\PhpRenderer;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
@@ -23,5 +24,7 @@ return function (App $app) {
     $app->get('/todolist', TodoController::class);
 
     $app->post('/additem', AddItemController::class);
+
+    $app->post('/mark-complete', MarkCompletedController::class);
 
 };

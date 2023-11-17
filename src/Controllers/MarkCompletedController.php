@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\TodoModel;
 use Psr\Http\Message\RequestInterface;
 use \Slim\Http\Interfaces\ResponseInterface;
 use Slim\Views\PhpRenderer;
 
-class AddItemController
+class MarkCompletedController
 {
     private TodoModel $model;
     private PhpRenderer $renderer;
@@ -21,8 +20,8 @@ class AddItemController
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args)
     {
         $postData = $request->getParsedBody();
-        if (isset($postData['item'])) {
-            $this->model->addItem($postData['item']);
+        if (isset($postData['id'])) {
+            $this->model->markCompleted($postData['id']);
         }
         return $response->withRedirect('/todolist');
         //status code
